@@ -1,0 +1,35 @@
+[project]
+name = "criminalip"
+version = "0.1.0"
+description = "Python script to access the Criminal IP API"
+readme = "README.md"
+authors = [
+    { name = "Jon Mark Allen", email = "ubahmapk@gmail.com" }
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.13"
+dependencies = [
+    "hatchling>=1.27.0",
+    "httpx>=0.28.1",
+    "icecream>=2.1.3",
+    "loguru>=0.7.3",
+    "pydantic>=2.10.4",
+    "pydantic-settings>=2.7.1",
+    "typer>=0.15.1",
+]
+
+[dependency-groups]
+dev = [
+    "debugpy>=1.8.11",
+    "ipython>=8.31.0",
+    "pre-commit>=4.0.1",
+    "ruff>=0.8.6",
+    "vermin>=1.6.0",
+]
+
+[project.scripts]
+criminal-ip = "criminal_ip.app:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
