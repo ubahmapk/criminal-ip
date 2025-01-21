@@ -2,12 +2,14 @@ from sys import stderr
 from typing import Annotated
 
 import typer
+from dacite import from_dict
 from httpx import Client, HTTPError
 from icecream import ic
 from loguru import logger
 from rich import print as rprint
 
 from criminal_ip.__version__ import __version__
+from criminal_ip.datatypes import SuspiciousInfoReport
 
 
 def set_logging_level(verbosity: int) -> None:
@@ -80,17 +82,58 @@ def get_summary_ip_report(client: Client, ip: str) -> dict:
     return response.json()
 
 
-def get_suspicious_info_report(client: Client, ip: str) -> dict:
+def get_suspicious_info_report(client: Client, ip: str) -> SuspiciousInfoReport:
     url = "/v2/feature/ip/suspicious-info"
     params = {"ip": ip}
 
     try:
         response = client.get(url, params=params)
-    except HTTPError() as e:
+    except HTTPError as e:
         logger.error(f"HTTP Error: {e}")
         raise typer.Exit(1) from None
 
-    return response.json()
+    suspicious_info_report: SuspiciousInfoReport = from_dict(data_class=SuspiciousInfoReport, data=response.json())
+
+    return suspicious_info_report
+
+
+def print_suspicious_info_report(report: SuspiciousInfoReport) -> None:
+    """Print the results of a Suspicious Info Report"""
+
+    print(f"IP: {report.ip}")
+    print(f"Status: {report.status}")
+    print(f"Score: {report.score}")
+    print(f"Abuse Record Count: {report.abuse_record_count}")
+
+    if report.ids.count:
+        print("IDS Alerts")
+        print(f"IDS Alert Count: {report.ids.count}")
+        for alert in report.ids.data:
+            print(f"{alert}")
+        print()
+
+    if report.current_opened_port.count > 0:
+        print("Current Open Ports")
+        print(f"Open Port Count: {report.current_opened_port.count}")
+        for port in report.current_opened_port.data:
+            print(f"{port}")
+            print()
+
+    print(f"Representative Domain: {report.representative_domain}")
+
+    if report.whois and report.whois.count:
+        print("Whois")
+        print(f"Whois Count: {report.whois.count}")
+        for record in report.whois.data:
+            print(f"{record}")
+            print()
+
+    if report.issues:
+        print("Issues")
+        print(report.issues)
+        print()
+
+    return None
 
 
 app = typer.Typer(add_completion=False, context_settings={"help_option_names": ["-h", "--help"]})
