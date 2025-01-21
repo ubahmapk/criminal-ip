@@ -1,5 +1,5 @@
 [project]
-name = "criminalip"
+name = "criminal_ip"
 version = "0.2.0"
 description = "Python script to access the Criminal IP API"
 readme = "README.md"
