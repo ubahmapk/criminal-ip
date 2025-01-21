@@ -208,19 +208,20 @@ def main(
     if not ip:
         raise typer.BadParameter("IP address is required")
 
-    rprint(f"[green]Retrieving Summary IP Report for {ip}[/green]")
-    summary_ip_report: dict = get_summary_ip_report(client, ip)
-    rprint(f"[green]Retrieving Full IP Report for {ip}[/green]")
-    full_ip_report: dict = get_full_ip_report(client, ip)
-    rprint(f"[green]Retrieving ISP Summary Report for {ip}[/green]")
-    isp_summary_report: dict = get_isp_summary_report(client, ip)
+    # rprint(f"[green]Retrieving Summary IP Report for {ip}[/green]")
+    # summary_ip_report: dict = get_summary_ip_report(client, ip)
+    # rprint(f"[green]Retrieving Full IP Report for {ip}[/green]")
+    # full_ip_report: dict = get_full_ip_report(client, ip)
+    # rprint(f"[green]Retrieving ISP Summary Report for {ip}[/green]")
+    # isp_summary_report: dict = get_isp_summary_report(client, ip)
     rprint(f"[green]Retrieving Suspicious Info Report for {ip}[/green]")
-    suspicious_info_report: dict = get_suspicious_info_report(client, ip)
+    report: SuspiciousInfoReport = get_suspicious_info_report(client, ip)
+    print_suspicious_info_report(report)
 
-    ic(summary_ip_report)
-    ic(full_ip_report)
-    ic(isp_summary_report)
-    ic(suspicious_info_report)
+    # ic(summary_ip_report)
+    # ic(full_ip_report)
+    # ic(isp_summary_report)
+    # ic(suspicious_info_report)
 
 
 if __name__ == "__main__":
