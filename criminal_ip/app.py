@@ -33,7 +33,7 @@ def print_account_info(client: Client) -> None:
     url = "/v1/user/me"
     try:
         response = client.post(url)
-    except HTTPError() as e:
+    except HTTPError as e:
         logger.error(f"HTTP Error: {e}")
         raise typer.Exit(1) from None
 
@@ -49,7 +49,7 @@ def get_full_ip_report(client: Client, ip: str) -> dict:
 
     try:
         response = client.get(url, params=params)
-    except HTTPError() as e:
+    except HTTPError as e:
         logger.error(f"HTTP Error: {e}")
         raise typer.Exit(1) from None
 
@@ -62,7 +62,7 @@ def get_isp_summary_report(client: Client, ip: str) -> dict:
 
     try:
         response = client.get(url, params=params)
-    except HTTPError() as e:
+    except HTTPError as e:
         logger.error(f"HTTP Error: {e}")
         raise typer.Exit(1) from None
 
@@ -75,7 +75,7 @@ def get_summary_ip_report(client: Client, ip: str) -> dict:
 
     try:
         response = client.get(url, params=params)
-    except HTTPError() as e:
+    except HTTPError as e:
         logger.error(f"HTTP Error: {e}")
         raise typer.Exit(1) from None
 
@@ -172,7 +172,7 @@ def main(
             show_default=False,
             help="Show version and exit",
         ),
-    ] = False,
+    ] = False,  # noinspection PyUnusedLocal
 ) -> None:
     """
     Python client for Criminal IP API
