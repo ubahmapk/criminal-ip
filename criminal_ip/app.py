@@ -105,14 +105,14 @@ def print_suspicious_info_report(report: SuspiciousInfoReport) -> None:
     print(f"Score: {report.score}")
     print(f"Abuse Record Count: {report.abuse_record_count}")
 
-    if report.ids.count:
+    if report.ids and report.ids.count:
         print("IDS Alerts")
         print(f"IDS Alert Count: {report.ids.count}")
         for alert in report.ids.data:
             print(f"{alert}")
         print()
 
-    if report.current_opened_port.count > 0:
+    if report.current_opened_port and report.current_opened_port.count > 0:
         print("Current Open Ports")
         print(f"Open Port Count: {report.current_opened_port.count}")
         for port in report.current_opened_port.data:
