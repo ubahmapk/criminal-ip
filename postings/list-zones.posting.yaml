@@ -1,0 +1,9 @@
+name: Print Account Info
+description: Print account info
+method: POST
+url: https://api.criminalip.io/v1/user/me
+headers:
+- name: x-api-key
+  value: ${CRIMINAL_IP_API_KEY}
+- name: Content-Type
+  value: application/json
