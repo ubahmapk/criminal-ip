@@ -1,0 +1,8 @@
+name: Full IP Report
+description: Print full IP report
+url: https://api.criminalip.io/v1/asset/ip/report?full=true&ip=
+headers:
+- name: x-api-key
+  value: ${CRIMINAL_IP_API_KEY}
+- name: Content-Type
+  value: application/json
