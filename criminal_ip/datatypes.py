@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 
 @dataclass(slots=True)
-class OpenPort:
+class OpenPort:  # noqa: D101
     port: int | None = None
     is_vulnerability: bool = False
     product_name: str | None = None
@@ -24,7 +24,7 @@ class OpenPort:
 
 
 @dataclass(slots=True)
-class IDSAlert:
+class IDSAlert:  # noqa: D101
     classification: str | None = None
     confirmed_time: str | None = None
     message: str | None = None
@@ -42,19 +42,19 @@ class IDSAlert:
 
 
 @dataclass(slots=True)
-class CurrentOpenedPorts:
+class CurrentOpenedPorts:  # noqa: D101
     count: int
     data: list[OpenPort] = field(default_factory=list)
 
 
 @dataclass(slots=True)
-class IDSAlerts:
+class IDSAlerts:  # noqa: D101
     count: int
     data: list[IDSAlert] = field(default_factory=list)
 
 
 @dataclass(slots=True)
-class Issues:
+class Issues:  # noqa: D101
     is_vpn: bool = False
     is_proxy: bool = False
     is_cloud: bool = False
@@ -82,7 +82,7 @@ class Issues:
 
 
 @dataclass(slots=True)
-class WhoisRecord:
+class WhoisRecord:  # noqa: D101
     as_name: str | None = None
     as_no: int | None = None
     city: str | None = None
@@ -110,13 +110,13 @@ class WhoisRecord:
 
 
 @dataclass(slots=True)
-class Whois:
+class Whois:  # noqa: D101
     count: int = 0
     data: list[WhoisRecord] = field(default_factory=list)
 
 
 @dataclass(slots=True)
-class SuspiciousInfoReport:
+class SuspiciousInfoReport:  # noqa: D101
     abuse_record_count: int = 0
     current_opened_port: CurrentOpenedPorts | None = None
     ids: IDSAlerts | None = None

@@ -13,7 +13,7 @@ from criminal_ip.datatypes import SuspiciousInfoReport
 
 
 def set_logging_level(verbosity: int) -> None:
-    """Set the global logging level"""
+    """Set the global logging level."""
 
     # Default level
     log_level = "ERROR"
@@ -30,6 +30,8 @@ def set_logging_level(verbosity: int) -> None:
 
 
 def print_account_info(client: Client) -> None:
+    """Print CriminalIP Account Info."""
+
     url = "/v1/user/me"
     try:
         response = client.post(url)
@@ -44,6 +46,8 @@ def print_account_info(client: Client) -> None:
 
 
 def get_full_ip_report(client: Client, ip: str) -> dict:
+    """Retrieve 'Full IP' report."""
+
     url = "/v1/asset/ip/report"
     params = {"ip": ip, "full": "true"}
 
@@ -57,6 +61,8 @@ def get_full_ip_report(client: Client, ip: str) -> dict:
 
 
 def get_isp_summary_report(client: Client, ip: str) -> dict:
+    """Retrieve 'Summary ISP' report."""
+
     url = "/v1/asset/ip/summary"
     params = {"ip": ip}
 
@@ -70,6 +76,8 @@ def get_isp_summary_report(client: Client, ip: str) -> dict:
 
 
 def get_summary_ip_report(client: Client, ip: str) -> dict:
+    """Retrieve 'Summary IP' report."""
+
     url = "/v1/asset/ip/report/summary"
     params = {"ip": ip}
 
@@ -83,6 +91,8 @@ def get_summary_ip_report(client: Client, ip: str) -> dict:
 
 
 def get_suspicious_info_report(client: Client, ip: str) -> SuspiciousInfoReport:
+    """Retrieve 'Suspicious Info' Report."""
+
     url = "/v2/feature/ip/suspicious-info"
     params = {"ip": ip}
 
@@ -98,7 +108,7 @@ def get_suspicious_info_report(client: Client, ip: str) -> SuspiciousInfoReport:
 
 
 def print_suspicious_info_report(report: SuspiciousInfoReport) -> None:
-    """Print the results of a Suspicious Info Report"""
+    """Print the results of a Suspicious Info Report."""
 
     print(f"IP: {report.ip}")
     print(f"Status: {report.status}")
@@ -140,6 +150,8 @@ app = typer.Typer(add_completion=False, context_settings={"help_option_names": [
 
 
 def version_callback(value: bool) -> None:
+    """Print version string and exit."""
+
     if value:
         print(f"update-shodan version {__version__}")
 
@@ -175,7 +187,7 @@ def main(
     ] = False,  # noinspection PyUnusedLocal
 ) -> None:
     """
-    Python client for Criminal IP API
+    Python client for Criminal IP API.
 
     Requires an API key from https://criminalip.io
 
