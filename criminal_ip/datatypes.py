@@ -12,13 +12,15 @@ class OpenPort:  # noqa: D101
     confirmed_time: str | None = None
 
     def __str__(self):
-        message: str = f"Port {self.port}\n"
-        message += f"Vulnerability: {self.is_vulnerability}\n"
-        message += f"Product Name: {self.product_name}\n"
-        message += f"Product Version: {self.product_version}\n"
-        message += f"Protocol: {self.protocol}\n"
-        message += f"Socket Type: {self.socket_type}\n"
-        message += f"Confirmed Time: {self.confirmed_time}"
+        message: str = (
+            f"Port {self.port}\n"
+            f"Vulnerability: {self.is_vulnerability}\n"
+            f"Product Name: {self.product_name}\n"
+            f"Product Version: {self.product_version}\n"
+            f"Protocol: {self.protocol}\n"
+            f"Socket Type: {self.socket_type}\n"
+            f"Confirmed Time: {self.confirmed_time}"
+        )
 
         return message
 
@@ -32,11 +34,13 @@ class IDSAlert:  # noqa: D101
     url: str | None = None
 
     def __str__(self) -> str:
-        message: str = f"Classification: {self.classification}\n"
-        message += f"Confirmed Time: {self.confirmed_time}\n"
-        message += f"Message: {self.message}\n"
-        message += f"Source System: {self.source_system}\n"
-        message += f"URL: {self.url}"
+        message: str = (
+            f"Classification: {self.classification}\n"
+            f"Confirmed Time: {self.confirmed_time}\n"
+            f"Message: {self.message}\n"
+            f"Source System: {self.source_system}\n"
+            f"URL: {self.url}"
+        )
 
         return message
 
@@ -67,16 +71,18 @@ class Issues:  # noqa: D101
     is_anonymous_vpn: bool = False
 
     def __str__(self) -> str:
-        message: str = f"VPN: {self.is_vpn}\n"
-        message += f"Proxy: {self.is_proxy}\n"
-        message += f"Cloud: {self.is_cloud}\n"
-        message += f"Tor: {self.is_tor}\n"
-        message += f"Hosting: {self.is_hosting}\n"
-        message += f"Mobile: {self.is_mobile}\n"
-        message += f"DarkWeb: {self.is_darkweb}\n"
-        message += f"Scanner: {self.is_scanner}\n"
-        message += f"Snort: {self.is_snort}\n"
-        message += f"Anonymous VPN: {self.is_anonymous_vpn}"
+        message: str = (
+            f"VPN: {self.is_vpn}\n"
+            f"Proxy: {self.is_proxy}\n"
+            f"Cloud: {self.is_cloud}\n"
+            f"Tor: {self.is_tor}\n"
+            f"Hosting: {self.is_hosting}\n"
+            f"Mobile: {self.is_mobile}\n"
+            f"DarkWeb: {self.is_darkweb}\n"
+            f"Scanner: {self.is_scanner}\n"
+            f"Snort: {self.is_snort}\n"
+            f"Anonymous VPN: {self.is_anonymous_vpn}"
+        )
 
         return message
 
@@ -95,16 +101,18 @@ class WhoisRecord:  # noqa: D101
     confirmed_time: str | None = None
 
     def __str__(self) -> str:
-        message: str = f"AS Name: {self.as_name}\n"
-        message += f"AS Number: {self.as_no}\n"
-        message += f"City: {self.city}\n"
-        message += f"Region: {self.region}\n"
-        message += f"Organization Name: {self.org_name}\n"
-        message += f"Postal Code: {self.postal_code}\n"
-        message += f"Latitude: {self.latitude}\n"
-        message += f"Longitude: {self.longitude}\n"
-        message += f"Organization Country Code: {self.org_country_code}\n"
-        message += f"Confirmed Time: {self.confirmed_time}"
+        message: str = (
+            f"AS Name: {self.as_name}\n"
+            f"AS Number: {self.as_no}\n"
+            f"City: {self.city}\n"
+            f"Region: {self.region}\n"
+            f"Organization Name: {self.org_name}\n"
+            f"Postal Code: {self.postal_code}\n"
+            f"Latitude: {self.latitude}\n"
+            f"Longitude: {self.longitude}\n"
+            f"Organization Country Code: {self.org_country_code}\n"
+            f"Confirmed Time: {self.confirmed_time}"
+        )
 
         return message
 
